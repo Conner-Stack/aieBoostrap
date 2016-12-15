@@ -79,21 +79,29 @@ void Application2D::draw() {
 	m_2dRenderer->begin();
 
 	// demonstrate animation
-	m_2dRenderer->setUVRect(int(m_timer) % 8 / 8.0f, 0, 1.f / 8, 1.f / 8);
-	m_2dRenderer->drawSprite(m_texture, 200, 200, 100, 100);
+	//m_2dRenderer->setUVRect(int(m_timer) % 8 / 8.0f, 0, 1.f / 8, 1.f / 8);
+	//m_2dRenderer->drawSprite(m_texture, 200, 200, 100, 100);
 
 	// demonstrate spinning sprite
 	m_2dRenderer->setUVRect(0,0,1,1);
-	m_2dRenderer->drawSprite(m_shipTexture, 600, 400, 0, 0, m_timer, 1);
+	m_2dRenderer->drawSprite(m_shipTexture, 600, 400, 0, 0, 0, 1);
 
 	// draw a thin line
 	m_2dRenderer->drawLine(300, 300, 600, 400, 2, 1);
 
-	// draw a moving purple circle
+	//draw a moving purple circle
+	m_2dRenderer->setRenderColour(1, 0, 1, 1);
+	m_2dRenderer->drawCircle(sin(m_timer) * 100 + 600, 150, 50);
 	m_2dRenderer->setRenderColour(1, 0, 1, 1);
 	m_2dRenderer->drawCircle(sin(m_timer) * 100 + 600, 150, 50);
 
 	// draw a rotating red box
+	m_2dRenderer->setRenderColour(1, 0, 0, 1);
+	m_2dRenderer->drawBox(300, 200, 300, 20, m_timer);
+	m_2dRenderer->setRenderColour(1, 0, 0, 1);
+	m_2dRenderer->drawBox(900, 200, 300, 20, m_timer);
+	m_2dRenderer->setRenderColour(1, 0, 0, 1);
+	m_2dRenderer->drawBox(600, 500, 60, 20, m_timer);
 	m_2dRenderer->setRenderColour(1, 0, 0, 1);
 	m_2dRenderer->drawBox(600, 500, 60, 20, m_timer);
 
